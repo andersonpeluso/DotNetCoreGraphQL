@@ -30,7 +30,7 @@ namespace DotNetGraphQL.API
                     var id = context.GetArgument<int>("usuarioId");
                     var dbUsuario = repositorio.OnObterUsuarioPorId(id);
 
-                    if (dbUsuario == null)
+                    if (dbUsuario is null)
                     {
                         context.Errors.Add(new ExecutionError("Não foi possivel encontrar usuário na base de dados."));
                         return null;
@@ -46,7 +46,8 @@ namespace DotNetGraphQL.API
                 {
                     var id = context.GetArgument<int>("usuarioId");
                     var dbUsuario = repositorio.OnObterUsuarioPorId(id);
-                    if (dbUsuario == null)
+
+                    if (dbUsuario is null)
                     {
                         context.Errors.Add(new ExecutionError("Não foi possivel encontrar usuário na base de dados."));
                         return null;
